@@ -55,405 +55,133 @@
             <input type="search" id="search-bar-input" class="search-bar" placeholder="Search features, FAQs...">
         </div>
       
-        <div class="nav-buttons">
-            <button class="login-btn" onclick="openModal('loginModal')" data-key="navLogIn" aria-haspopup="dialog">Log In</button>
-            <button class="signup-btn" onclick="openModal('signupModal')" data-key="navSignUp" aria-haspopup="dialog">Sign Up</button>
-        </div>
-        <div id="user-profile-icon">
-            <div class="profile-avatar">
-                <span id="user-initials"></span>
-                <img id="user-avatar-img" src="" alt="User Avatar" style="display:none;">
+        <!doctype html>
+        <html lang="en">
+          <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width,initial-scale=1" />
+            <title>HealthNest</title>
+            <link rel="stylesheet" href="./Style.css">
+            <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+            <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script src="./Vani.js" defer></script>
+            <script src="./script.js" defer></script>
+          </head>
+          <body data-theme="light">
 
-        <!-- He ve maza code bagh aani vichar kar re bada -->
+            <div id="preloader" aria-hidden="true" style="display:none">
+              <svg class="logo-animated" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path class="pulse" d="M50,5 C74.85,5 95,25.15 95,50 C95,74.85 74.85,95 50,95 C25.15,95 5,74.85 5,50 C5,25.15 25.15,5 50,5 Z"/>
+                <path class="cross" d="M50 30 L50 70 M30 50 L70 50" stroke="white" stroke-width="8" stroke-linecap="round"/>
+              </svg>
+            </div>
 
-        
-            <div class="nav-links">
-                <a href="HealthNest.html"><i class="fas fa-home"></i><span data-key="navHome">Home</span></a>
+            <nav class="navbar" id="navbar">
+              <div class="logo">
+                <span class="material-symbols-outlined">health_and_safety</span>
+                HealthNest
+              </div>
+              <div class="nav-links">
+                <a href="#home"><i class="fas fa-home"></i><span data-key="navHome">Home</span></a>
                 <a href="#features"><i class="fas fa-star"></i><span data-key="featuresTitle">Features</span></a>
                 <a href="#dashboard"><i class="fas fa-chart-line"></i><span data-key="navDashboard">Dashboard</span></a>
+                <a href="#appointments"><i class="fas fa-calendar-alt"></i><span>Appointments</span></a>
+                <a href="#queue"><i class="fas fa-list"></i><span>Queue</span></a>
                 <a href="#faq"><i class="fas fa-question-circle"></i><span data-key="faqTitle">FAQ</span></a>
-          </div>
-            <div class="search-container">
+              </div>
+              <div class="search-container">
                 <input type="search" id="search-bar-input" class="search-bar" placeholder="Search features, FAQs...">
-
-            </div>
-      
-            <div class="nav-buttons">
-                <button class="login-btn" onclick="openModal('loginModal')" data-key="navLogIn" aria-haspopup="dialog">Log In</button>
-                <button class="signup-btn" onclick="openModal('signupModal')" data-key="navSignUp" aria-haspopup="dialog">Sign Up</button>
-            </div>
-            <div id="user-profile-icon">
-                <div class="profile-avatar">
-                    <span id="user-initials"></span>
-                    <img id="user-avatar-img" src="" alt="User Avatar" style="display:none;">
-                </div>
-
-                <div class="form-options">
-                    <label for="remember me"><input type="checkbox" id="remember-me"> Remember Me</label>
-                    <a href="#" style="color: var(--primary);">Forgot Password?</a>
-                </div>
-                <button type="submit" class="cta-button" style="width:100%;">Log In</button>
-            </form>
-            <div class="or-divider">OR</div>
-            <div class="social-logins">
-                <button class="social-btn" onclick="showToast('Logging in with Google...', 'info')"><i class="fab fa-google" style="color:#DB4437;"></i> Google</button>
-                <button class="social-btn" onclick="showToast('Logging in with Microsoft...', 'info')"><i class="fab fa-microsoft" style="color:#00A4EF;"></i> Microsoft</button>
-                <button class="social-btn" onclick="showToast('Logging in with Apple...', 'info')"><i class="fab fa-apple" style="color:#555;"></i> Apple</button>
-                <button class="social-btn" onclick="showToast('Logging in with Facebook...', 'info')"><i class="fab fa-facebook" style="color:#1877F2;"></i> Facebook</button>
-
-            </div>
+              </div>
+              <div class="nav-buttons">
+                <button class="login-btn" onclick="openModal('loginModal')" data-key="navLogIn">Log In</button>
+                <button class="signup-btn" onclick="openModal('signupModal')" data-key="navSignUp">Sign Up</button>
+              </div>
             </nav>
 
-            <div id="backButton" onclick="history.back()" title="Go Back"><i class="fas fa-arrow-left"></i></div>
-            <div id="scrollUpButton" onclick="scrollToTop()" title="Scroll to Top"><i class="fas fa-angle-double-up"></i></div>
-            <div id="aiAssistantButton" onclick="openModal('aiChatModal')" title="AI Assistant" aria-haspopup="dialog"><i class="fas fa-robot"></i></div>
-            <div id="settingsButton" onclick="toggleSettings()" title="Settings"><i class="fas fa-sliders-h"></i></div>
-            
-            <div id="settingsMenu" role="dialog" aria-labelledby="settingsMenuTitle">
-                <h1 id="settingsMenuTitle"><b data-key="settingsTitle">Settings</b></h1>
-                <label for="theme" data-key="settingsTheme">Theme (Light/Dark)</label>
-                <select id="theme" onchange="changeTheme(this.value)"><option value="light">Light</option><option value="dark">Dark</option></select>
-                <label for="textSize" data-key="settingsTextSize">Website Size</label>
-                <select id="textSize" onchange="changeTextSize(this.value)"><option value="15px">Small</option><option value="16px" selected>Default</option><option value="17px">Large</option><option value="18px">Extra Large</option></select>
-                <label for="language" data-key="settingsLanguage">Language</label>
-                <select id="language" onchange="switchLanguage(this.value)"><option value="en">English</option><option value="hi">हिंदी</option></select>
-                <label for="account" data-key="settingsAccount">Account Settings</label>
-                <input type="text" id="account" placeholder="Update your details">
-                <button onclick="updateAccount()" data-key="settingsUpdate">Update</button>
-                <label for="notifications" data-key="settingsNotifications">Notifications</label>
-                <select id="notifications"><option value="on">On</option><option value="off">Off</option></select>
-                <label for="privacy" data-key="settingsPrivacy">Privacy</label>
-                <select id="privacy"><option value="public">Public</option><option value="private">Private</option></select>
-                <label for="security" data-key="settingsSecurity">Security</label>
-                <select id="security"><option value="2fa">Two-Factor Auth</option><option value="alerts">Login Alerts</option></select>
-                <label for="storage" data-key="settingsStorage">Data and Storage</label>
-                <button onclick="clearStorage()" data-key="settingsClear">Clear Storage</button>
-                <label for="support" data-key="settingsSupport">Help and Support</label>
-                <button onclick="window.location.href='#contact'" data-key="settingsContactSupport">Contact Support</button>
-            </div>
-            
-            <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
-
-            <div id="loginModal" class="modal-overlay" role="dialog" aria-labelledby="loginModalTitle" aria-modal="true">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2 id="loginModalTitle">Welcome Back!</h2>
-                        <button class="modal-close-btn" onclick="closeModal('loginModal')" aria-label="Close Login Dialog">&times;</button>
-                    </div>
-                    <form onsubmit="handleLogin(event)">
-                        <input type="email" class="modal-input" placeholder="Enter your email" aria-label="Email Input" required>
-                        <div class="password-wrapper">
-                            <input type="password" id="login-password" class="modal-input" placeholder="Enter your password" aria-label="Password Input" required>
-                            <button type="button" class="password-toggle" onclick="togglePasswordVisibility('login-password', this)" aria-label="Show password"><i class="fas fa-eye"></i></button>
-                        </div>
-                        <div class="form-options">
-                            <label for="remember-me"><input type="checkbox" id="remember-me"> Remember Me</label>
-                            <a href="#" style="color: var(--primary);">Forgot Password?</a>
-                        </div>
-                        <button type="submit" class="cta-button" style="width:100%;">Log In</button>
-                    </form>
-                    <div class="or-divider">OR</div>
-                    <div class="social-logins">
-                        <button class="social-btn" onclick="showToast('Logging in with Google...', 'info')"><i class="fab fa-google" style="color:#DB4437;"></i> Google</button>
-                        <button class="social-btn" onclick="showToast('Logging in with Microsoft...', 'info')"><i class="fab fa-microsoft" style="color:#00A4EF;"></i> Microsoft</button>
-                        <button class="social-btn" onclick="showToast('Logging in with Apple...', 'info')"><i class="fab fa-apple" style="color:#555;"></i> Apple</button>
-                        <button class="social-btn" onclick="showToast('Logging in with Facebook...', 'info')"><i class="fab fa-facebook" style="color:#1877F2;"></i> Facebook</button>
-                    </div>
-                </div>
-            </div>
-
-            <div id="signupModal" class="modal-overlay" role="dialog" aria-labelledby="signupModalTitle" aria-modal="true">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2 id="signupModalTitle">Create Your Account</h2>
-                        <button class="modal-close-btn" onclick="closeModal('signupModal')" aria-label="Close Signup Dialog">&times;</button>
-                    </div>
-                    <form onsubmit="handleLogin(event)">
-                        <input type="text" class="modal-input" placeholder="Username" aria-label="Username Input" required>
-                        <input type="email" class="modal-input" placeholder="Your Email" aria-label="Email Input" required>
-                        <div class="password-wrapper">
-                            <input type="password" id="signup-password" class="modal-input" placeholder="Create Password" aria-label="Password Input" required>
-                            <button type="button" class="password-toggle" onclick="togglePasswordVisibility('signup-password', this)" aria-label="Show password"><i class="fas fa-eye"></i></button>
-                        </div>
-                        <div class="password-wrapper">
-                            <input type="password" id="signup-confirm-password" class="modal-input" placeholder="Confirm Password" aria-label="Confirm Password Input" required>
-                            <button type="button" class="password-toggle" onclick="togglePasswordVisibility('signup-confirm-password', this)" aria-label="Show password"><i class="fas fa-eye"></i></button>
-                        </div>
-                        <button class="cta-button" type="submit" style="width:100%; margin-top: 1rem;">Sign Up</button>
-                    </form>
-                    <div class="or-divider">OR</div>
-                    <div class="social-logins">
-                        <button class="social-btn" onclick="showToast('Signing up with Google...', 'info')"><i class="fab fa-google" style="color:#DB4437;"></i> Google</button>
-                        <button class="social-btn" onclick="showToast('Signing up with Microsoft...', 'info')"><i class="fab fa-microsoft" style="color:#00A4EF;"></i> Microsoft</button>
-                        <button class="social-btn" onclick="showToast('Signing up with Apple...', 'info')"><i class="fab fa-apple" style="color:#555;"></i> Apple</button>
-                        <button class="social-btn" onclick="showToast('Signing up with Facebook...', 'info')"><i class="fab fa-facebook" style="color:#1877F2;"></i> Facebook</button>
-                    </div>
-                </div>
-            </div>
-
-            <div id="aiChatModal" class="modal-overlay" role="dialog" aria-labelledby="aiChatModalTitle" aria-modal="true">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2 id="aiChatModalTitle">HealthNest Assistant</h2>
-                        <button class="modal-close-btn" onclick="closeModal('aiChatModal')" aria-label="Close AI Assistant Dialog">&times;</button>
-                    </div>
-                    <div id="ai-chat-box" aria-live="polite"></div>
-                    <form id="ai-chat-input-form" onsubmit="handleAIChat(event)">
-                        <input type="text" id="ai-chat-input" class="modal-input" placeholder="Type a command..." aria-label="AI Chat Input">
-                        <button type="button" id="ai-voice-btn" title="Voice Command"><i class="fas fa-microphone"></i></button>
-                        <button type="submit" id="ai-send-btn" class="btn signup-btn" aria-label="Send Command"><i class="fas fa-paper-plane"></i></button>
-                    </form>
-                </div>
-            </div>
-
-            <div id="editProfileModal" class="modal-overlay" role="dialog" aria-labelledby="editProfileModalTitle" aria-modal="true">
-                <div class="modal-content">
-                    <div class="modal-header"><h2 id="editProfileModalTitle" data-key="editProfileTitle">Edit Your Profile</h2><button class="modal-close-btn" onclick="closeModal('editProfileModal')" aria-label="Close Edit Profile Dialog">&times;</button></div>
-                    
-                    <label for="editProfilePic">Profile Picture</label>
-                    <input type="file" id="editProfilePic" class="modal-input" accept="image/*" onchange="previewProfilePic(event)">
-
-                    <div class="form-grid">
-                        <div>
-                            <label for="editName" data-key="editNameLabel">Full Name</label>
-                            <input type="text" id="editName" class="modal-input" placeholder="Your full name" value="Ayush Harinkhere">
-                        </div>
-                        <div>
-                            <label for="editEmail">Email Address</label>
-                            <input type="email" id="editEmail" class="modal-input" placeholder="your.email@example.com" value="ayushharinkhere2005@email.com">
-                        </div>
-                    </div>
-                    
-                    <label for="editAddress">Address</label>
-                    <input type="text" id="editAddress" class="modal-input" placeholder="Your City, Country" value="Nagpur, India">
-                    
-                    <div class="form-grid">
-                        <div><label for="editDob" data-key="editDobLabel">Date of Birth</label><input type="date" id="editDob" class="modal-input" value="2005-02-10"></div>
-                        <div><label for="editGender">Gender</label><select id="editGender" class="modal-select"><option value="Male" selected>Male</option><option value="Female">Female</option><option value="Other">Other</option></select></div>
-                        <div><label for="editMobile">Mobile Number</label><input type="tel" id="editMobile" class="modal-input" placeholder="+91-XXXXX-XXXXX"></div>
-                    </div>
-                    
-                    <div class="form-grid">
-                        <div>
-                            <label for="editHeight" data-key="editHeightLabel">Height (cm)</label>
-                            <input type="number" id="editHeight" class="modal-input" value="175" oninput="convertHeight()">
-                        </div>
-                        <div>
-                            <label for="editHeightFt">Height (ft/in)</label>
-                            <input type="text" id="editHeightFt" class="modal-input" placeholder="e.g., 5'9&quot;" oninput="convertHeight(true)">
-                        </div>
-                    </div>
-
-                    <div class="form-grid">
-                        <div><label for="editWeight" data-key="editWeightLabel">Weight (kg)</label><input type="number" id="editWeight" class="modal-input" value="52"></div>
-                        <div><label for="editBlood" data-key="editBloodLabel">Blood Group</label><select id="editBlood" class="modal-select"><option value="O+">O+</option><option value="A+" selected>A+</option><option value="B+">B+</option><option value="AB+">AB+</option><option value="A-">A-</option><option value="B-">B-</option><option value="AB-">AB-</option></select></div>            
-                    </div>
-                    <button class="cta-button" style="width:100%; margin-top: 1.25rem;" onclick="saveProfile()" data-key="editSaveButton">Save Changes</button> 
-                </div>
-            </div>
-
-
-    <!-- Patient Registration Modal -->
-    <div id="patientRegistrationModal" class="modal-overlay" role="dialog" aria-labelledby="patientRegTitle" aria-modal="true">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="patientRegTitle">Complete Patient Registration</h2>
-                <button class="modal-close-btn" onclick="closeModal('patientRegistrationModal')" aria-label="Close">&times;</button>
-            </div>
-            <form onsubmit="handlePatientRegistration(event)">
-                <div class="form-grid">
-                    <div><label>Full Name</label><input type="text" class="modal-input" required></div>
-                    <div><label>Date of Birth</label><input type="date" class="modal-input" required></div>
-                </div>
-                <div class="form-grid">
-                    <div><label>Mobile Number</label><input type="tel" class="modal-input" required></div>
-                    <div><label>Email</label><input type="email" class="modal-input" required></div>
-                </div>
-                <label>Medical History</label>
-                <textarea class="modal-input" placeholder="Any existing conditions..." rows="4"></textarea>
-                <label>Allergies</label>
-                <input type="text" class="modal-input" placeholder="List any allergies">
-                <button type="submit" class="cta-button" style="width:100%; margin-top: 1rem;">Complete Registration</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Appointment Scheduling Modal -->
-    <div id="appointmentModal" class="modal-overlay" role="dialog" aria-labelledby="appointmentTitle" aria-modal="true">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="appointmentTitle">Schedule Appointment</h2>
-                <button class="modal-close-btn" onclick="closeModal('appointmentModal')" aria-label="Close">&times;</button>
-            </div>
-            <form onsubmit="handleAppointmentBooking(event)">
-                <label>Select Doctor</label>
-                <select id="doctorSelect" class="modal-input" required>
-                    <option value="">Choose a doctor...</option>
-                    <option value="dr-gupta">Dr. Rajesh Gupta - General Physician</option>
-                    <option value="dr-sharma">Dr. Priya Sharma - Cardiologist</option>
-                    <option value="dr-patel">Dr. Amit Patel - Dentist</option>
-                </select>
-                <label>Date</label>
-                <input type="date" id="appointmentDate" class="modal-input" required>
-                <label>Available Time Slots</label>
-                <div id="timeSlots" class="time-slots-grid"></div>
-                <label>Appointment Reason</label>
-                <textarea class="modal-input" placeholder="Describe your symptoms..." rows="3" required></textarea>
-                <button type="submit" class="cta-button" style="width:100%; margin-top: 1rem;">Confirm Appointment</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Admin Panel Modal -->
-    <div id="adminModal" class="modal-overlay" role="dialog" aria-labelledby="adminTitle" aria-modal="true">
-        <div class="modal-content admin-modal-content">
-            <div class="modal-header">
-                <h2 id="adminTitle">Admin & Hospital Authority Dashboard</h2>
-                <button class="modal-close-btn" onclick="closeModal('adminModal')" aria-label="Close">&times;</button>
-            </div>
-            <div class="admin-tabs">
-                <button class="admin-tab-btn active" onclick="switchAdminTab('users')">Users</button>
-                <button class="admin-tab-btn" onclick="switchAdminTab('doctors')">Doctors</button>
-                <button class="admin-tab-btn" onclick="switchAdminTab('appointments')">Appointments</button>
-                <button class="admin-tab-btn" onclick="switchAdminTab('queue')">Queue</button>
-                <button class="admin-tab-btn" onclick="switchAdminTab('crowd')">Crowd Monitor</button>
-            </div>
-            <div id="adminContent" class="admin-tab-content"></div>
-        </div>
-    </div>
-
-    <!-- Emergency Alert Modal -->
-    <div id="emergencyAlertModal" class="modal-overlay" role="dialog" aria-labelledby="emergencyTitle" aria-modal="true">
-        <div class="modal-content emergency-modal">
-            <div class="modal-header">
-                <h2 id="emergencyTitle"><i class="fas fa-exclamation-triangle" style="color: #e74c3c;"></i> Emergency Alert</h2>
-                <button class="modal-close-btn" onclick="closeModal('emergencyAlertModal')">&times;</button>
-            </div>
-            <form onsubmit="handleEmergencyAlert(event)">
-                <label>Emergency Type</label>
-                <select class="modal-input" required>
-                    <option value="">Select emergency type...</option>
-                    <option value="critical">Critical - Immediate Care Needed</option>
-                    <option value="serious">Serious - Urgent Care Required</option>
-                    <option value="moderate">Moderate - Need Quick Attention</option>
-                </select>
-                <label>Symptoms/Description</label>
-                <textarea class="modal-input" placeholder="Describe the emergency..." rows="4" required></textarea>
-                <label><input type="checkbox" required> I confirm this is a genuine emergency</label>
-                <button type="submit" class="cta-button emergency-btn" style="width:100%; background-color: #e74c3c;">Alert Hospital</button>
-            </form>
-        </div>
-    </div>
-
-    <header class="hero">
-        <div class="hero-content">
-            <h1 data-key="heroTitle">Your Health, In Your Hands.</h1>
-            <p data-key="heroSubtitle">With HealthNest, save your entire medical history in one secure place and access it anytime, anywhere.</p>
-            <a href="#" class="cta-button" data-key="heroCTA" onclick="openModal('signupModal')">Get Started Today</a>
-        </div>
-    </header>
-
-            <div id="privacyPolicyModal" class="modal-overlay">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2>Privacy Policy</h2>
-                        <button class="modal-close-btn" onclick="closeModal('privacyPolicyModal')">&times;</button>
-                    </div>
-                    <p>Your privacy is important to us. It is HealthNest's policy to respect your privacy regarding any information we may collect from you across our website...</p>
-                    </div>
-            </div>
-
-
-            <div id="termsOfServiceModal" class="modal-overlay">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2>Terms of Service</h2>
-                        <button class="modal-close-btn" onclick="closeModal('termsOfServiceModal')">&times;</button>
-                    </div>
-                    <p>By accessing the website at HealthNest, you are agreeing to be bound by these terms of service, all applicable laws and regulations...</p>
-                    </div>
-            </div>
-
             <header class="hero">
-                <div class="hero-content">
-                    <h1 data-key="heroTitle">Your Health, In Your Hands.</h1>
-                    <p data-key="heroSubtitle">With HealthNest, save your entire medical history in one secure place and access it anytime, anywhere.</p>
-                    <a href="#" class="cta-button" data-key="heroCTA" onclick="openModal('signupModal')">Get Started Today</a>
-                </div>
+              <div class="hero-content">
+                <h1 data-key="heroTitle">Your Health, In Your Hands.</h1>
+                <p data-key="heroSubtitle">With HealthNest, save your entire medical history in one secure place and access it anytime, anywhere.</p>
+                <a href="#" class="cta-button" data-key="heroCTA" onclick="openModal('signupModal')">Get Started Today</a>
+              </div>
             </header>
 
             <main>
-                <section id="user-profile" class="section">
-                    <h2 class="section-title" data-key="profileTitle">Your Profile</h2>
-                    <div class="profile-card">
-                        <div class="profile-pic">
-                            <img id="profilePicImg" src="" alt="Profile Picture" style="display: none;">
-                            <i id="profilePicIcon" class="fas fa-user"></i>
-                        </div>
-                        <div class="profile-details">
-                            <h3 data-key="profileName">Ayush Harinkhere</h3>
-                            <p id="profileEmail" class="user-email">ayushharinkhere2005@email.com</p>
-                            <div class="profile-meta">
-                                <div class="meta-item"><span data-key="profileAgeLabel">Age</span><strong id="profileAgeValue" data-key="profileAgeValue">20 Years</strong></div>
-                                <div class="meta-item"><span>Gender</span><strong id="profileGender">Male</strong></div>
-                                <div class="meta-item"><span data-key="profileHeightLabel">Height</span><strong id="profileHeightValue" data-key="profileHeightValue">175 cm / 5'9"</strong></div>
-                                <div class="meta-item"><span data-key="profileWeightLabel">Weight</span><strong id="profileWeightValue" data-key="profileWeightValue">52 kg</strong></div>
-                                <div class="meta-item"><span data-key="profileBloodLabel">Blood Group</span><strong id="profileBloodValue">A+</strong></div>
-                                <div class="meta-item address"><span>Address</span><strong id="profileAddress">Nagpur, India</strong></div>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="cta-button" onclick="openModal('editProfileModal')"><i class="fas fa-edit"></i> <span data-key="profileEditButton">Edit Profile</span></button>
-                            </div>
-                        </div>
+              <section id="user-profile" class="section">
+                <h2 class="section-title" data-key="profileTitle">Your Profile</h2>
+                <div class="profile-card">
+                  <div class="profile-pic">
+                    <i id="profilePicIcon" class="fas fa-user"></i>
+                  </div>
+                  <div class="profile-details">
+                    <h3 data-key="profileName">Ayush Harinkhere</h3>
+                    <p id="profileEmail" class="user-email">ayushharinkhere2005@email.com</p>
+                    <div class="profile-meta">
+                      <div class="meta-item"><span data-key="profileAgeLabel">Age</span><strong id="profileAgeValue" data-key="profileAgeValue">20 Years</strong></div>
+                      <div class="meta-item"><span>Gender</span><strong id="profileGender">Male</strong></div>
+                      <div class="meta-item"><span data-key="profileHeightLabel">Height</span><strong id="profileHeightValue" data-key="profileHeightValue">175 cm / 5'9"</strong></div>
+                      <div class="meta-item"><span data-key="profileWeightLabel">Weight</span><strong id="profileWeightValue" data-key="profileWeightValue">52 kg</strong></div>
                     </div>
-                </section>
-
-                <section id="features" class="section">
-                    <h2 class="section-title" data-key="featuresTitle">Key Features</h2>
-                    <div class="features-container">
-                        <div class="scroll-arrow left" onclick="scrollFeatures(-1)">&lt;</div>
-                        <div class="features-grid" id="features-grid">
-                            <div class="feature-card" data-searchable="health timeline"><span class="material-symbols-outlined">timeline</span><h3 data-key="feature1Title">Health Timeline</h3><p data-key="feature1Desc">View every health event from childhood to today in chronological order.</p></div>
-                            <div class="feature-card" data-searchable="document upload"><span class="material-symbols-outlined">upload_file</span><h3 data-key="feature2Title">Document Upload</h3><p data-key="feature2Desc">Securely upload all your medical reports, scans, and prescriptions.</p></div>
-                            <div class="feature-card" data-searchable="share with doctor"><span class="material-symbols-outlined">share</span><h3 data-key="feature3Title">Share with Doctor</h3><p data-key="feature3Desc">Give your doctor secure permission to view your health history with one click.</p></div>
-                            <div class="feature-card" data-searchable="health assistance chatbot ai"><span class="material-symbols-outlined">smart_toy</span><h3>AI Health Assistant</h3><p>Get instant answers to your health questions with our intelligent chatbot.</p></div>
-                            <div class="feature-card" data-searchable="lifesaver emergency"><span class="material-symbols-outlined">emergency</span><h3>Life Saver Info</h3><p>Store critical information like blood type and allergies for emergency situations.</p></div>
-                            <div class="feature-card" data-searchable="realtime health information"><span class="material-symbols-outlined">sensors</span><h3>Real-time Health Info</h3><p>Connect your smart devices to track your health metrics in real-time.</p></div>
-                            <div class="feature-card" data-searchable="manage appointment"><span class="material-symbols-outlined">event_available</span><h3>Manage Appointments</h3><p>Never miss an appointment with our integrated calendar and reminder system.</p></div>
-                            <div class="feature-card" data-searchable="safe and secure"><span class="material-symbols-outlined">security</span><h3>Safe and Secure</h3><p>Your data is protected with the highest standards of end-to-end encryption.</p></div>
-                        </div>
-                        <div class="scroll-arrow right" onclick="scrollFeatures(1)">&gt;</div>
+                    <div class="profile-actions">
+                      <button class="cta-button" onclick="openModal('editProfileModal')"><i class="fas fa-edit"></i> <span data-key="profileEditButton">Edit Profile</span></button>
                     </div>
-                </section>
-
-
-        <!-- Appointment Scheduling Section -->
-        <section id="appointments" class="section">
-            <h2 class="section-title">Book Your Appointment</h2>
-            <div class="appointment-info">
-                <p>Schedule your appointment with our experienced doctors and specialists.</p>
-                <button class="cta-button" onclick="openModal('appointmentModal')"><i class="fas fa-calendar-plus"></i> Book Appointment</button>
-                <button class="cta-button" onclick="openModal('emergencyAlertModal')" style="background-color: #e74c3c;"><i class="fas fa-exclamation-triangle"></i> Emergency</button>
-            </div>
-            <div id="appointmentsList" class="appointments-container" style="margin-top: 2rem;">
-                <h3>Your Appointments</h3>
-                <div class="appointment-cards" id="appointmentCardsContainer"></div>
-            </div>
-        </section>
-
-        <!-- Queue Management Section -->
-        <section id="queue" class="section">
-            <h2 class="section-title">Hospital Queue & Status</h2>
-            <div class="queue-info-container">
-                <div class="queue-card">
-                    <h3>Your Queue Status</h3>
-                    <div class="queue-status">
-                        <p>Token: <span id="queueToken" class="token-number">--</span></p>
-                        <p>Position: <span id="queuePosition" class="position-number">--</span> in queue</p>
-                        <p>Estimated Wait Time: <span id="waitTime">--</span></p>
-                    </div>
+                  </div>
                 </div>
-                <div class="queue-card">
+              </section>
+
+              <section id="features" class="section">
+                <h2 class="section-title" data-key="featuresTitle">Key Features</h2>
+                <div class="features-container">
+                  <div class="features-grid" id="features-grid">
+                    <div class="feature-card" data-searchable="health timeline"><span class="material-symbols-outlined">timeline</span><h3 data-key="feature1Title">Health Timeline</h3><p data-key="feature1Desc">View every health event in chronological order.</p></div>
+                    <div class="feature-card" data-searchable="document upload"><span class="material-symbols-outlined">upload_file</span><h3 data-key="feature2Title">Document Upload</h3><p data-key="feature2Desc">Securely upload all your medical reports.</p></div>
+                    <div class="feature-card" data-searchable="share with doctor"><span class="material-symbols-outlined">share</span><h3 data-key="feature3Title">Share with Doctor</h3><p data-key="feature3Desc">Give your doctor secure permission to view your history.</p></div>
+                  </div>
+                </div>
+              </section>
+
+              <section id="dashboard" class="section">
+                <h2 class="section-title" data-key="navDashboard">Your Health Dashboard</h2>
+                <div class="dashboard-grid">
+                  <div id="bp-card" class="dashboard-card"><h4><i class="fas fa-heartbeat" style="color: #e74c3c;"></i> Blood Pressure</h4><p><span class="value">128/80</span><span class="unit">mmHg</span></p></div>
+                  <div id="sugar-card" class="dashboard-card"><h4><i class="fas fa-tint" style="color: #f1c40f;"></i> Sugar Level</h4><p><span class="value">95</span><span class="unit">mg/dL</span></p></div>
+                  <div id="hr-card" class="dashboard-card"><h4><i class="fas fa-chart-line" style="color: #3498db;"></i> Heart Rate</h4><p><span class="value">80</span><span class="unit">BPM</span></p></div>
+                </div>
+                <div class="dashboard-container" style="margin-top: 1.875rem;">
+                  <canvas id="healthChart" aria-label="A line chart showing health metrics" role="img"></canvas>
+                </div>
+              </section>
+
+              <section id="faq" class="section">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="faq-accordion">
+                  <div class="faq-item" data-searchable="what is healthnest"><button class="faq-question" aria-expanded="false"><span data-key="faq1Question">What is HealthNest?</span><span class="material-symbols-outlined">expand_more</span></button><div class="faq-answer"><p data-key="faq1Answer">HealthNest is a digital platform where you can securely store your medical information.</p></div></div>
+                </div>
+              </section>
+
+              <section class="newsletter">
+                <h2 data-key="newsletterTitle">Stay Updated!</h2>
+                <form onsubmit="handleSubscription(event)"><input type="email" placeholder="Your Email" required><button type="submit" class="btn signup-btn">Subscribe</button></form>
+              </section>
+
+            </main>
+
+            <footer id="contact">
+              <p>
+                <b data-key="footerRights">&copy; 2026 HealthNest. All rights reserved.</b> |
+                <a href="#" onclick="openModal('privacyPolicyModal')" data-key="footerPrivacy">Privacy Policy</a> |
+                <a href="#" onclick="openModal('termsOfServiceModal')" data-key="footerTerms">Terms of Service</a>
+              </p>
+              <div class="social-media-links">
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+              </div>
+            </footer>
+
+            <script src="script.js"></script>
+          </body>
+        </html>
                     <h3>Hospital Crowd Meter</h3>
                     <div class="crowd-meter">
                         <div class="crowd-bar">
