@@ -733,10 +733,10 @@ const keywordCategories = {
     return aiResponse;
 }
 let userInput = "I have a severe headache and fever";
-let response = getAiResponse(userInput);
+let response = getAIResponse(userInput);
 console.log(response); // This will print one of the 'symptoms' responses.
 
 userInput = "I need a diagnosis for my problem";
-response = getAiResponse(userInput);
+response = getAIResponse(userInput);
 console.log(response); 
     
