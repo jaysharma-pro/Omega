@@ -437,12 +437,13 @@
         .cta-button { background: var(--primary); color: var(--on-primary); padding: 1rem 2rem; border: none; border-radius: var(--border-radius-medium); font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; font-size: 1rem; transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .cta-button:hover { transform: translateY(-0.3rem); box-shadow: 0 0.6rem 1.6rem -0.5rem var(--primary); }
         
-        #backButton, #scrollUpButton, #settingsButton, #aiAssistantButton { position: fixed; width: 3.5rem; height: 3.5rem; border-radius: var(--border-radius-medium); box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.2); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); z-index: 999; font-size: 1.5rem; border: none; }
-        #backButton:hover, #scrollUpButton:hover, #settingsButton:hover, #aiAssistantButton:hover { transform: scale(1.1) rotate(5deg); box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.25); }
+        #backButton, #scrollUpButton, #settingsButton, #aiChatButton, #aiAssistantButton { position: fixed; width: 3.5rem; height: 3.5rem; border-radius: var(--border-radius-medium); box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.2); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); z-index: 999; font-size: 1.5rem; border: none; }
+        #backButton:hover, #scrollUpButton:hover, #settingsButton:hover, #aiChatButton:hover, #aiAssistantButton:hover { transform: scale(1.1) rotate(5deg); box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.25); }
         #backButton { left: 1.25rem; bottom: 1.25rem; background: var(--secondary-container); color: var(--on-secondary-container); }
         #scrollUpButton { right: 5.6rem; bottom: 1.25rem; background: var(--secondary-container); color: var(--on-secondary-container); }
         #settingsButton { right: 1.25rem; bottom: 1.25rem; background: var(--primary-container); color: var(--on-primary-container); }
-        #aiAssistantButton { right: 1.25rem; bottom: 5.6rem; background: var(--tertiary-container); color: var(--on-tertiary-container); }
+        #aiChatButton { right: 1.25rem; bottom: 5.6rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        #aiAssistantButton { right: 1.25rem; bottom: 9.5rem; background: var(--tertiary-container); color: var(--on-tertiary-container); }
 
         #settingsMenu { display: none; position: fixed; right: 1.25rem; bottom: 5.6rem; width: 20rem; max-height: 70vh; background: var(--surface); color: var(--on-surface); padding: 1.25rem; border-radius: var(--border-radius-large); box-shadow: 0 0.6rem 2rem rgba(0, 0, 0, 0.2); z-index: 1000; flex-direction: column; overflow-y: auto; animation: fadeIn 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); border: 1px solid var(--outline); }
         #settingsMenu h1 { color: var(--primary); text-align: center; margin-bottom: 1.25rem; }

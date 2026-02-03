@@ -178,18 +178,27 @@
         document.getElementById('profileGender').textContent = document.getElementById('editGender').value;
         
         const heightCm = document.getElementById('editHeight').value;
-        const heightFt = document.getElementById('editHeightFt').value;
-        document.getElementById('profileHeightValue').textContent = `${heightCm} cm / ${heightFt}`;
+        const heightFt = document.getElementById('editHeightFt')?.value || '';
+        document.getElementById('profileHeightValue').textContent = heightFt ? `${heightCm} cm / ${heightFt}` : `${heightCm} cm`;
         
         document.getElementById('profileWeightValue').textContent = `${document.getElementById('editWeight').value} kg`;
-        document.getElementById('profileBloodValue').textContent = document.getElementById('editBlood').value;
-
+        const bloodEl = document.getElementById('editBlood');
+        if (bloodEl) document.getElementById('profileBloodValue').textContent = bloodEl.value;
 
         // Update profile picture if a new one was selected
         if (newProfilePicSrc) {
-            document.getElementById('profilePicImg').src = newProfilePicSrc;
-            document.getElementById('profilePicImg').style.display = 'block';
-            document.getElementById('profilePicIcon').style.display = 'none';
+            // Create or update profile image in profile section
+            const profilePic = document.querySelector('.profile-pic');
+            if (profilePic) {
+                const img = profilePic.querySelector('img') || document.createElement('img');
+                img.src = newProfilePicSrc;
+                img.alt = 'Profile Picture';
+                img.style.display = 'block';
+                if (!profilePic.querySelector('img')) {
+                    profilePic.appendChild(img);
+                }
+                profilePic.querySelector('.fa-user')?.style?.setProperty('display', 'none', 'important');
+            }
 
             // Update nav avatar
             document.getElementById('user-avatar-img').src = newProfilePicSrc;

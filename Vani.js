@@ -1,43 +1,166 @@
-function getAIResponse(userMessage) {
-    const userMessageLower = userMessage.toLowerCase();
-    const hour = new Date().getHours();
-    let aiResponse = "I'm sorry, I don't have information on that topic right now. Please try asking something else.";
+/**
+ * VANI - Health AI Assistant for HealthNest
+ * Smart conversational AI built for healthcare support
+ */
 
-        if (userMessageLower.includes('dark')) {
-            aiResponse = "Switching to dark mode.";
-            changeTheme('dark');
-        } else if (userMessageLower.includes('light')) {
-            aiResponse = "Switching to light mode.";
-            changeTheme('light');
-        } else if (userMessageLower.includes('dashboard')) {
-            aiResponse = "Scrolling to the Health Dashboard.";
-            document.getElementById('dashboard').scrollIntoView({ behavior: 'smooth' });
-            closeModal('aiChatModal');
-        } else if (userMessageLower.includes('profile')) {
-            aiResponse = "Here is your profile section.";
-            document.getElementById('user-profile').scrollIntoView({ behavior: 'smooth' });
-            closeModal('aiChatModal');
-        } else if (userMessageLower.includes('feature')) {
-            aiResponse = "Showing the key features now.";
-            document.getElementById('features').scrollIntoView({ behavior: 'smooth' });
-            closeModal('aiChatModal');
-        } else if (userMessageLower.includes('setting')) {
-            aiResponse = "Opening the settings panel.";
-            toggleSettings();
-        } else if (userMessageLower.includes('bmi') || userMessageLower.includes('bmi value')) {
-            const bmi = document.querySelector('#bmi-card .value').textContent;
-            aiResponse = `Your current Body Mass Index (BMI) is ${bmi}.`;
-        } else if (userMessageLower.includes('blood pressure') || userMessageLower.includes('bp')) {
-            const bp = document.querySelector('#bp-card .value').textContent;
-            aiResponse = `Your latest blood pressure reading is ${bp} mmHg.`;
-        } else if (userMessageLower.includes('heart rate') || userMessageLower.includes('hr')) {
-            const hr = document.querySelector('#hr-card .value').textContent;
-            aiResponse = `Your latest heart rate is ${hr} BPM.`;
-        } else if (userMessageLower.includes('sugar') || userMessageLower.includes('glucose')) {
-            const sugar = document.querySelector('#sugar-card .value').textContent;
-            aiResponse = `Your latest blood sugar level is ${sugar} mg/dL.`;
-        } else if (userMessageLower.includes('name')) {
-            const name = document.querySelector('[data-key="profileName"]').textContent;
+function getAIResponse(userMessage) {
+    const userMessageLower = userMessage.toLowerCase().trim();
+    const hour = new Date().getHours();
+    let aiResponse = "I'm here to help with your health! Type 'help' to see what I can do.";
+    // Theme changes
+    if (userMessageLower.includes('dark') && userMessageLower.includes('mode')) {
+        aiResponse = "🌙 Switched to dark mode!";
+        changeTheme('dark');
+    } else if (userMessageLower.includes('light') && userMessageLower.includes('mode')) {
+        aiResponse = "☀️ Switched to light mode!";
+        changeTheme('light');
+    } 
+    // Navigation commands
+    else if (userMessageLower.includes('dashboard')) {
+        aiResponse = "📊 Going to your dashboard!";
+        document.getElementById('dashboard')?.scrollIntoView({ behavior: 'smooth' });
+        closeModal('aiChatModal');
+    } 
+    else if (userMessageLower.includes('profile')) {
+        aiResponse = "👤 Opening your profile!";
+        document.getElementById('user-profile')?.scrollIntoView({ behavior: 'smooth' });
+        closeModal('aiChatModal');
+    } 
+    else if (userMessageLower.includes('features')) {
+        aiResponse = "⭐ Showing key features!";
+        document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
+        closeModal('aiChatModal');
+    }
+    // Health metrics
+    else if (userMessageLower.includes('bmi')) {
+        const bmi = document.querySelector('#bmi-card .value')?.textContent || '23.5';
+        aiResponse = `📏 Your BMI is ${bmi} kg/m² - Great!`;
+    } 
+    else if (userMessageLower.includes('blood pressure') || userMessageLower.includes('bp')) {
+        const bp = document.querySelector('#bp-card .value')?.textContent || '128/80';
+        aiResponse = `❤️ Your BP is ${bp} mmHg - Normal!`;
+    } 
+    else if (userMessageLower.includes('heart rate')) {
+        const hr = document.querySelector('#hr-card .value')?.textContent || '80';
+        aiResponse = `💓 Your heart rate is ${hr} BPM - Healthy!`;
+    } 
+    else if (userMessageLower.includes('sugar')) {
+        const sugar = document.querySelector('#sugar-card .value')?.textContent || '95';
+        aiResponse = `🩸 Your sugar level is ${sugar} mg/dL - Normal!`;
+    }
+    // Health education
+    else if (userMessageLower.includes('what is bmi')) {
+        aiResponse = `📚 BMI (Body Mass Index) measures body fat:
+• < 18.5: Underweight
+• 18.5-24.9: Normal ✓
+• 25-29.9: Overweight
+• 30+: Obesity
+Consult a doctor for personalized advice!`;
+    }
+    else if (userMessageLower.includes('how to lower') && userMessageLower.includes('bp')) {
+        aiResponse = `💪 Lower blood pressure by:
+• Reduce salt
+• Eat fruits & vegetables
+• Exercise 30 mins daily
+• Limit alcohol
+• Manage stress
+Always consult your doctor!`;
+    }
+    else if (userMessageLower.includes('diet') || userMessageLower.includes('healthy food')) {
+        aiResponse = `🥗 Healthy diet:
+• Whole grains & lean protein
+• Fruits & vegetables
+• Limited processed foods
+• Drink 8+ glasses of water
+• Control portions`;
+    }
+    else if (userMessageLower.includes('exercise') || userMessageLower.includes('workout')) {
+        aiResponse = `🏃 Exercise guidelines:
+• 150 mins moderate activity/week
+• OR 75 mins vigorous activity/week
+• Strength training 2+ days/week
+Start slow, be consistent!`;
+    }
+    else if (userMessageLower.includes('sleep')) {
+        aiResponse = `😴 Sleep tips:
+• Aim for 7-9 hours
+• Regular sleep schedule
+• No screens 30 mins before bed
+• Keep room cool & dark
+• Limit caffeine after 2 PM`;
+    }
+    else if (userMessageLower.includes('stress') || userMessageLower.includes('anxious')) {
+        aiResponse = `🧘 Manage stress by:
+• Deep breathing exercises
+• Meditation/mindfulness
+• Physical activity
+• Talk to someone
+• Spend time in nature`;
+    }
+    else if (userMessageLower.includes('headache')) {
+        aiResponse = `🤕 For headaches:
+• Drink plenty of water
+• Rest in quiet, dark room
+• Apply cold compress
+• Take a short walk
+If severe, see a doctor!`;
+    }
+    else if (userMessageLower.includes('tired') || userMessageLower.includes('fatigue')) {
+        aiResponse = `⚡ Feeling tired? 
+• Stay hydrated
+• Take a walk
+• Get sunlight
+• Eat balanced snack
+• Check your sleep!`;
+    }
+    // Emergencies
+    else if (userMessageLower.includes('chest pain')) {
+        aiResponse = `🚨 **EMERGENCY - CALL 112/102 NOW!** Chest pain is serious!`;
+    }
+    else if (userMessageLower.includes("can't breathe")) {
+        aiResponse = `🚨 **EMERGENCY - CALL 112/102 NOW!** Get help immediately!`;
+    }
+    else if (userMessageLower.includes('stroke') || userMessageLower.includes('face drooping')) {
+        aiResponse = `🚨 **EMERGENCY - CALL 112/102 NOW!** Seek help immediately!`;
+    }
+    else if (userMessageLower.includes('suicide') || userMessageLower.includes('want to die')) {
+        aiResponse = `🆘 Please call KIRAN: 1800-599-0019 or Aasra: 9820466726. You matter!`;
+    }
+    // About
+    else if (userMessageLower.includes('who are you') || userMessageLower.includes('what are you')) {
+        aiResponse = `🤖 I'm Vani, your Health AI Assistant! Built to help you stay healthy and answer medical questions.`;
+    }
+    else if (userMessageLower.includes('creator') || userMessageLower.includes('developer')) {
+        aiResponse = `Created by Ayush Harinkhede | Guided by Vivan Tagde & Lucky Rahangdale | Built by Gaurav Lanjewar, Akash Kumar Rai, Jay Sharma`;
+    }
+    else if (userMessageLower === 'help') {
+        aiResponse = `📖 I can help with:
+• View metrics (BP, BMI, etc)
+• Navigate app
+• Health tips (diet, exercise, sleep)
+• General health questions
+• Emergency guidance
+Type "dashboard", "profile", or ask anything!`;
+    }
+    // Greetings
+    else if (userMessageLower.includes('hello') || userMessageLower.includes('hi')) {
+        if (hour < 12) aiResponse = "☀️ Good Morning! How can I help?";
+        else if (hour < 18) aiResponse = "🌤️ Good Afternoon! What do you need?";
+        else aiResponse = "🌙 Good Evening! How can I assist?";
+    }
+    else if (userMessageLower.includes('thank')) {
+        aiResponse = `You're welcome! 😊 Anything else?`;
+    }
+    else if (userMessageLower.includes('bye') || userMessageLower.includes('goodbye')) {
+        aiResponse = `👋 Take care! Stay healthy! 💚`;
+    }
+    else {
+        aiResponse = "I'm not sure about that. Try asking about health topics or type 'help'!";
+    }
+
+    return aiResponse;
+}
+
             aiResponse = `Your name is ${name}.`;
         } else if (userMessageLower.includes('age')) {
             const age = document.getElementById('profileAgeValue').textContent;

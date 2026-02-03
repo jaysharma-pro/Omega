@@ -25,76 +25,32 @@
                 <div class="logo">
                     <span class="material-symbols-outlined">health_and_safety</span>
                     HealthNest
-                <!-- He ve maza code bagh aani vichar kar re bada -->
-
-    <nav class="navbar" id="navbar"> 
-        <div class="logo">
-            <span class="material symbols outlined"></span>
-            HealthNest
-
-        </div>
-        
-        <div class="nav-links">
-            <a href="#home"><i class="fas fa-home"></i><span data-key="navHome">Home</span></a>
-            <a href="#features"><i class="fas fa-star"></i><span data-key="featuresTitle">Features</span></a>
-            <a href="#dashboard"><i class="fas fa-chart-line"></i><span data-key="navDashboard">Dashboard</span></a>
-            <a href="#appointments"><i class="fas fa-calendar-alt"></i><span>Appointments</span></a>
-            <a href="#queue"><i class="fas fa-list"></i><span>Queue</span></a>
-            <a href="#admin" id="adminLink" style="display:none;"><i class="fas fa-cog"></i><span>Admin</span></a>
-            <a href="#faq"><i class="fas fa-question-circle"></i><span data-key="faqTitle">FAQ</span></a>
-        </div>
-        
-        <div class="search-container">
-            <input type="search" id="search-bar-input" class="search-bar" placeholder="Search features, FAQs...">
-        </div>
-      
-        <div class="nav-buttons">
-            <button class="login-btn" onclick="openModal('loginModal')" data-key="navLogIn" aria-haspopup="dialog">Log In</button>
-            <button class="signup-btn" onclick="openModal('signupModal')" data-key="navSignUp" aria-haspopup="dialog">Sign Up</button>
-        </div>
-        <div id="user-profile-icon">
-            <div class="profile-avatar">
-                <span id="user-initials"></span>
-                <img id="user-avatar-img" src="" alt="User Avatar" style="display:none;">
-
-        <!-- He ve maza code bagh aani vichar kar re bada -->
-
-        
-            <div class="nav-links">
-                <a href="HealthNest.html"><i class="fas fa-home"></i><span data-key="navHome">Home</span></a>
-                <a href="#features"><i class="fas fa-star"></i><span data-key="featuresTitle">Features</span></a>
-                <a href="#dashboard"><i class="fas fa-chart-line"></i><span data-key="navDashboard">Dashboard</span></a>
-                <a href="#faq"><i class="fas fa-question-circle"></i><span data-key="faqTitle">FAQ</span></a>
-          </div>
-            <div class="search-container">
-                <input type="search" id="search-bar-input" class="search-bar" placeholder="Search features, FAQs...">
-
-            </div>
-      
-            <div class="nav-buttons">
-                <button class="login-btn" onclick="openModal('loginModal')" data-key="navLogIn" aria-haspopup="dialog">Log In</button>
-                <button class="signup-btn" onclick="openModal('signupModal')" data-key="navSignUp" aria-haspopup="dialog">Sign Up</button>
-            </div>
-            <div id="user-profile-icon">
-                <div class="profile-avatar">
-                    <span id="user-initials"></span>
-                    <img id="user-avatar-img" src="" alt="User Avatar" style="display:none;">
                 </div>
-
-                <div class="form-options">
-                    <label for="remember me"><input type="checkbox" id="remember-me"> Remember Me</label>
-                    <a href="#" style="color: var(--primary);">Forgot Password?</a>
+        
+                <div class="nav-links">
+                    <a href="#home"><i class="fas fa-home"></i><span data-key="navHome">Home</span></a>
+                    <a href="#features"><i class="fas fa-star"></i><span data-key="featuresTitle">Features</span></a>
+                    <a href="#dashboard"><i class="fas fa-chart-line"></i><span data-key="navDashboard">Dashboard</span></a>
+                    <a href="#appointments"><i class="fas fa-calendar-alt"></i><span>Appointments</span></a>
+                    <a href="#queue"><i class="fas fa-list"></i><span>Queue</span></a>
+                    <a href="#admin" id="adminLink" style="display:none;"><i class="fas fa-cog"></i><span>Admin</span></a>
+                    <a href="#faq"><i class="fas fa-question-circle"></i><span data-key="faqTitle">FAQ</span></a>
                 </div>
-                <button type="submit" class="cta-button" style="width:100%;">Log In</button>
-            </form>
-            <div class="or-divider">OR</div>
-            <div class="social-logins">
-                <button class="social-btn" onclick="showToast('Logging in with Google...', 'info')"><i class="fab fa-google" style="color:#DB4437;"></i> Google</button>
-                <button class="social-btn" onclick="showToast('Logging in with Microsoft...', 'info')"><i class="fab fa-microsoft" style="color:#00A4EF;"></i> Microsoft</button>
-                <button class="social-btn" onclick="showToast('Logging in with Apple...', 'info')"><i class="fab fa-apple" style="color:#555;"></i> Apple</button>
-                <button class="social-btn" onclick="showToast('Logging in with Facebook...', 'info')"><i class="fab fa-facebook" style="color:#1877F2;"></i> Facebook</button>
-
-            </div>
+        
+                <div class="search-container">
+                    <input type="search" id="search-bar-input" class="search-bar" placeholder="Search features, FAQs...">
+                </div>
+      
+                <div class="nav-buttons">
+                    <button class="login-btn" onclick="openModal('loginModal')" data-key="navLogIn" aria-haspopup="dialog">Log In</button>
+                    <button class="signup-btn" onclick="openModal('signupModal')" data-key="navSignUp" aria-haspopup="dialog">Sign Up</button>
+                </div>
+                <div id="user-profile-icon" style="display:none;">
+                    <div class="profile-avatar">
+                        <span id="user-initials"></span>
+                        <img id="user-avatar-img" src="" alt="User Avatar" style="display:none;">
+                    </div>
+                </div>
             </nav>
 
   <!-- HERO SECTION -->
@@ -434,6 +390,24 @@
     </div>
   </div>
 
+  <!-- AI CHAT MODAL -->
+  <div id="aiChatModal" class="modal-overlay" role="dialog" aria-labelledby="aiChatTitle" aria-modal="true">
+    <div class="modal-content" style="max-width: 500px; height: 600px; display: flex; flex-direction: column;">
+      <div class="modal-header">
+        <h2 id="aiChatTitle">Vani - Health AI Assistant</h2>
+        <button class="modal-close-btn" onclick="closeModal('aiChatModal')">&times;</button>
+      </div>
+      <div id="ai-chat-box" style="flex: 1; overflow-y: auto; padding: 1rem; background: var(--surface-dim); border-radius: 8px; margin-bottom: 1rem; display: flex; flex-direction: column;">
+        <!-- Chat messages appear here -->
+      </div>
+      <form id="ai-chat-input-form" onsubmit="handleAIChat(event)" style="display: flex; gap: 0.5rem;">
+        <input type="text" id="ai-chat-input" class="modal-input" placeholder="Ask me anything about your health..." style="flex: 1; margin: 0;">
+        <button type="submit" class="cta-button" style="margin: 0; padding: 0.75rem 1.5rem;"><i class="fas fa-paper-plane"></i></button>
+        <button type="button" id="ai-voice-btn" class="cta-button" style="margin: 0; padding: 0.75rem 1.5rem;" title="Voice input"><i class="fas fa-microphone"></i></button>
+      </form>
+    </div>
+  </div>
+
   <!-- TOAST CONTAINER -->
   <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
 
@@ -441,6 +415,7 @@
   <div id="backButton" onclick="history.back()" title="Go Back"><i class="fas fa-arrow-left"></i></div>
   <div id="scrollUpButton" onclick="scrollToTop()" title="Scroll to Top"><i class="fas fa-angle-double-up"></i></div>
   <div id="settingsButton" onclick="toggleSettings()" title="Settings"><i class="fas fa-sliders-h"></i></div>
+  <div id="aiChatButton" onclick="openModal('aiChatModal')" title="Chat with Vani AI" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); cursor: pointer;"><i class="fas fa-comments"></i></div>
 
   <!-- SETTINGS MENU -->
   <div id="settingsMenu" role="dialog" aria-labelledby="settingsMenuTitle">
